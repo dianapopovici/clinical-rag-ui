@@ -12,8 +12,7 @@ Angular 22 (Signals) · Tailwind CSS 4 · dark, premium, WCAG-minded.
 
 **English · [Italiano](README.it.md)**
 
-<!-- After deploying, replace with your live URL: -->
-**▶ Live demo:** _add your Vercel URL here_
+**▶ Live demo: [clinical-rag-ui.vercel.app](https://clinical-rag-ui.vercel.app)**
 
 </div>
 
