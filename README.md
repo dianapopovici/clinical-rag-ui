@@ -1,59 +1,105 @@
-# ClinicalRagUi
+<div align="center">
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.4.
+# Clinical RAG — UI
 
-## Development server
+**A polished, accessible chat interface for querying clinical documents with cited sources.**
+Angular 22 (Signals) · Tailwind CSS 4 · dark, premium, WCAG-minded.
 
-To start a local development server, run:
+[![Angular](https://img.shields.io/badge/Angular-22-1f2937?logo=angular&logoColor=white)](https://angular.dev/)
+[![Tailwind](https://img.shields.io/badge/Tailwind_CSS-4-0f766e)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-111827?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/License-MIT-6b7280)](LICENSE)
+
+**English · [Italiano](README.it.md)**
+
+<!-- After deploying, replace with your live URL: -->
+**▶ Live demo:** _add your Vercel URL here_
+
+</div>
+
+---
+
+> **What it is.** The front-end of the clinical AI portfolio: a chat UI that turns the
+> [Clinical RAG Engine](https://github.com/dianapopovici/clinical-rag-engine) into something
+> a person can actually use. Ask in natural language, get a grounded answer with the **cited
+> source snippets** shown alongside it. Ships with a **demo mode**, so the public deployment
+> works with no backend; flip to **live mode** to talk to the real RAG engine on `localhost`.
+
+> **Data disclaimer.** Every clinical snippet shown is **100% synthetic**. No real patient
+> data is present.
+
+---
+
+## Highlights
+
+| Area | What was done |
+|---|---|
+| **Design** | Intentional type system (Space Grotesk / DM Sans / JetBrains Mono), design-token color system, premium dark surfaces — not a default template. |
+| **Accessibility** | Screen-reader live region for new messages, ARIA labels on every control, full keyboard support, visible focus rings, `prefers-reduced-motion`, semantic headings. |
+| **UX** | New-conversation reset (no reload), copy-answer with confirmation, auto-scroll, typing indicator, multiline input (Enter to send · Shift+Enter for newline). |
+| **Architecture** | Standalone components, Angular **Signals** for state, a typed service that swaps between demo data and the live RAG HTTP API. |
+| **Responsive** | Single-page, mobile-friendly layout that never reloads. |
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Angular 22 (standalone, Signals, new control flow) |
+| Styling | Tailwind CSS 4 + design tokens |
+| Language | TypeScript (strict) |
+| Data | Demo mode (canned) or live `POST /query` to the Clinical RAG Engine |
+| Deploy | Vercel (static build) |
+
+---
+
+## Quickstart
 
 ```bash
-ng serve
+# 1. Install
+npm install
+
+# 2. Run the dev server
+npm start            # → http://localhost:4200
+
+# 3. Production build
+npm run build        # → dist/clinical-rag-ui/browser
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+By default the app runs in **demo mode**. To use the real engine, start the
+[Clinical RAG Engine](https://github.com/dianapopovici/clinical-rag-engine) on
+`http://localhost:8000`, then toggle **Live** in the top-right.
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Project Structure
 
-```bash
-ng generate component component-name
+```
+src/
+├── app/
+│   ├── app.ts            # root component — chat state via Signals
+│   ├── app.html          # accessible chat template
+│   ├── app.config.ts     # providers (HttpClient)
+│   ├── rag.service.ts    # demo data ↔ live RAG HTTP API
+│   └── models.ts         # typed message / source models
+├── styles.css            # design-token system + components
+└── index.html
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## Deploy (Vercel)
 
-## Building
+1. Push this repo to GitHub.
+2. On [vercel.com](https://vercel.com), **Add New → Project** and import the repo.
+3. Vercel reads [`vercel.json`](vercel.json) (build `ng build`, output
+   `dist/clinical-rag-ui/browser`) and gives you a public URL.
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+<div align="center">
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+**Built by [Diana Popovici](https://www.linkedin.com/in/diana-popovici)** — AI systems that actually work in production.
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+</div>
